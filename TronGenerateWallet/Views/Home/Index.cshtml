@@ -28,6 +28,15 @@
         const walletInfo = await response.text();
         document.getElementById('walletInfo').innerText = walletInfo;
     });
+    document.getElementById('tronScanLink').style.display = 'none';
+    document.getElementById('walletInfo').innerText = walletInfo;
+    const addressMatch = walletInfo.match(/Address: (T[0-9a-zA-Z]+)/);
+    if (addressMatch) {
+        const tronScanLink = `https://tronscan.org/#/address/${addressMatch[1]}`;
+        const linkElement = document.getElementById('tronScanLink');
+        linkElement.href = tronScanLink;
+        linkElement.style.display = 'inline-block';
+    }
 </script>
 
 <style>
