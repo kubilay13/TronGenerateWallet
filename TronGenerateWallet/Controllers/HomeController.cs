@@ -14,14 +14,16 @@ namespace TronGenerateWallet.Controllers
             _tronWalletGenerateService = tronWalletGenerateService;
             _logger = logger;
         }
-
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var walletInfo = await _tronWalletGenerateService.GenerateTronWalletAsync();
-            ViewData["WalletInfo"] = walletInfo;
             return View();
         }
-
+        [HttpPost]
+        public async Task<IActionResult> GenerateWallet()
+        {
+            var walletInfo = await _tronWalletGenerateService.GenerateTronWalletAsync();
+            return Content(walletInfo);
+        }
         public IActionResult Privacy()
         {
             return View();

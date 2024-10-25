@@ -1,5 +1,4 @@
 ﻿using TronNet;
-using TronNet.Protocol;
 
 namespace TronGenerateWallet.Services
 {
@@ -17,7 +16,8 @@ namespace TronGenerateWallet.Services
             var key = TronECKey.GenerateKey(TronNetwork.MainNet);
             var privatekey=key.GetPrivateKey();
             var address = key.GetPublicAddress();
-            return $"Private Key: {privatekey}\nAddress: {address}";
+            Console.WriteLine($"--PrivateKey:{privatekey}\nWalletAdress:{address}--");
+            return $"Private Key:{privatekey}\nAddress:{address}";
         }
     }
 }
